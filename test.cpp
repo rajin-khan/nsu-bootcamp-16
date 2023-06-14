@@ -1,27 +1,16 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-// Driver Code
-int main()
-{
+int main() {
+    string inputTime;
+    cout << "Enter a time in 12-hour format (hh:mm:ssAM/PM): ";
+    cin >> inputTime;
 
-    int arr[100];
+    bool convertedTime = (inputTime.substr(8, 2)=="AM");
 
-    arr[0] = 1;
-    arr[1] = 2;
+    cout << "Converted time in 24-hour format: " << convertedTime << endl;
 
-    int count = 0;
-	
-    for (int i=0; i<100; i++) {
-
-        if (arr[i]!='\0') {
-
-            count++;
-        }
-    }
-
-    cout << count << endl;
-
-
-	return 0;
+    return 0;
 }
