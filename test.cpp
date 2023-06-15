@@ -1,50 +1,50 @@
-#include <iostream>
-#include <climits>
+#include<iostream>
 
 using namespace std;
 
-int smallestSum(int arr[], int n) {
+int stepCount(int init[2], int end[2]) {
 
-    int smallest = INT_MAX, secSmallest = INT_MAX;
+    int steps = 0;
 
-    for (int i=0; i<n; i++) {
+    bool reached = false;
 
-        if (arr[i]<=smallest) {
+    while(!reached) {
 
-            secSmallest = smallest;
-            smallest = arr[i];
+        if (init[0]>end[0]) {
+
+            init[0]--;
         }
-        else if (arr[i]<secSmallest) {
+        else if (init[0]<end[0]) {
 
-            secSmallest = arr[i];
+            init[0]++;
         }
+        if (init[1]>end[1]) {
+
+            init[1]--;
+        }
+        else if (init[1]<end[1]) {
+
+            init[1]++;
+        }
+        steps++;
+
+        if (init[0]==end[0] && init[1]==end[1]) {
+
+            reached = true;
+        }
+        
     }
 
-    return smallest+secSmallest;
+    return steps;
 }
 
 int main() {
 
-    int T;
-    cin >> T;
+    int init[2], end[2];
 
-    for (int t=0; t<T; t++) {
+    cin >> init[0] >> init[1] >> end[0] >> end[1];
 
-        int N;
-        cin >> N;
-
-        int* arr = new int[N];
-
-        for (int i=0; i<N; i++) {
-
-            cin >> arr[i];
-        }
-
-        int result = smallestSum(arr, N);
-        cout << result << endl;
-
-        delete[] arr;
-    }
+    cout << stepCount(init, end);
 
     return 0;
 }
