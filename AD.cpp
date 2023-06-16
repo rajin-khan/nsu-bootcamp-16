@@ -1,20 +1,28 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
+long long reverse(long long num) {
+
+    long long rev = 0;
+
+    while (num!=0) {
+
+        rev = rev*10 + num%10;
+        num/=10;
+    }
+
+    return rev;
+}
+
 int main() {
 
-    int N, revnum = 0;
+    long long N;
 
     cin >> N;
 
-    while (N!=0) {
+    long long rev = reverse(N);
 
-        revnum = revnum*10 + N%10;
-        N/=10;
-    }
-
-    cout << revnum;
-
+    cout << rev << endl;
     return 0;
 }
